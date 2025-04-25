@@ -2,33 +2,87 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Real-Time Weather App</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to right, #6dd5fa, #1fc751);
-        color: #fff;
+        font-family: "Roboto", sans-serif;
+        background: linear-gradient(to right, #4facfe, #00f2fe);
+        color: #333;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
         text-align: center;
-        padding: 50px;
+        max-width: 400px;
+        width: 100%;
       }
-      input,
-      button {
-        padding: 10px;
+
+      h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #4facfe;
+      }
+
+      input {
+        width: 100%;
+        padding: 12px;
         font-size: 16px;
-        margin: 10px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        outline: none;
+        transition: border-color 0.3s;
       }
+
+      input:focus {
+        border-color: #4facfe;
+      }
+
+      button {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        background: #4facfe;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #00c6ff;
+      }
+
       .weather-info {
-        margin-top: 30px;
-        font-size: 22px;
+        margin-top: 20px;
+        font-size: 18px;
+        color: #555;
+      }
+
+      .weather-info span {
+        font-weight: bold;
+        color: #333;
       }
     </style>
   </head>
   <body>
-    <h1>🌤️ Real-Time Weather App</h1>
-    <input type="text" id="cityInput" placeholder="Enter City Name" />
-    <button onclick="getWeather()">Get Weather</button>
+    <div class="container">
+      <h1>🌤️ Real-Time Weather App</h1>
+      <input type="text" id="cityInput" placeholder="Enter City Name" />
+      <button onclick="getWeather()">Get Weather</button>
 
-    <div class="weather-info" id="weatherResult"></div>
+      <div class="weather-info" id="weatherResult"></div>
+    </div>
 
     <script>
       function getWeather() {
@@ -41,12 +95,12 @@
           .then((data) => {
             if (data.cod === 200) {
               document.getElementById("weatherResult").innerHTML = `
-              📍 Location: ${data.name}, ${data.sys.country} <br>
-              🌡️ Temperature: ${data.main.temp}°C <br>
-              🌥️ Condition: ${data.weather[0].main} <br>
-              💧 Humidity: ${data.main.humidity}% <br>
-              💨 Wind Speed: ${data.wind.speed} m/s
-            `;
+                            📍 <span>Location:</span> ${data.name}, ${data.sys.country} <br>
+                            🌡️ <span>Temperature:</span> ${data.main.temp}°C <br>
+                            🌥️ <span>Condition:</span> ${data.weather[0].main} <br>
+                            💧 <span>Humidity:</span> ${data.main.humidity}% <br>
+                            💨 <span>Wind Speed:</span> ${data.wind.speed} m/s
+                        `;
             } else {
               document.getElementById("weatherResult").innerHTML =
                 "❌ City not found. Try again!";
