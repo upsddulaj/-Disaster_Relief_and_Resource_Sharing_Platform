@@ -1,0 +1,74 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage
+*.lcov
+
+# Dependency directories
+node_modules/
+
+# Build outputs
+/dist
+/build
+/.next
+/.nuxt
+/.output
+/.vercel
+
+# Vite / React
+vite.config.ts.timestamp*
+vite.config.js.timestamp*
+
+# Static site generators
+public/build
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Env files
+.env
+.env.*
+!.env.example
+
+# Local env files
+*.local
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Docker
+**/docker-data
+
+# Jest
+.jest/cache
+.jest/tmp
+
+# Logs and temp from server
+server/tmp
+
+# Azure/VS metadata
+.azure
+
