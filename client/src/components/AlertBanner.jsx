@@ -7,9 +7,16 @@ const AlertBanner = ({ alert }) => {
   };
 
   return (
-    <div className={`rounded-lg border px-4 py-3 text-sm ${colorMap[alert.severity] || colorMap.info}`}>
-      <p className="font-semibold">{alert.title}</p>
-      <p className="mt-1 text-sm">{alert.message}</p>
+    <div
+      className={`flex items-start gap-3 rounded-xl border px-4 py-3 text-sm shadow-sm ${
+        colorMap[alert.severity] || colorMap.info
+      }`}
+    >
+      <span className="mt-1 inline-flex h-2.5 w-2.5 rounded-full bg-current opacity-70" />
+      <div>
+        <p className="font-semibold">{alert.title}</p>
+        <p className="mt-1 text-sm">{alert.message}</p>
+      </div>
     </div>
   );
 };

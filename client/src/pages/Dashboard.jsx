@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import api from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import StatCard from '../components/StatCard';
+import PageHeader from '../components/PageHeader';
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -23,10 +24,11 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-6">
-      <header className="rounded-2xl bg-white p-6 shadow-sm">
-        <h2 className="text-2xl font-semibold">Welcome, {user?.name}</h2>
-        <p className="mt-2 text-slate-600">Role: {user?.role}</p>
-      </header>
+      <PageHeader title={`Welcome, ${user?.name || 'Responder'}`} subtitle={`Role: ${user?.role || ''}`}>
+        <div className="rounded-full bg-blue-50 px-4 py-2 text-xs font-semibold text-blue-700">
+          Relief readiness score: 92%
+        </div>
+      </PageHeader>
 
       {(user?.role === 'admin' || user?.role === 'organization') && stats && (
         <section className="grid gap-4 md:grid-cols-4">
@@ -37,31 +39,31 @@ const Dashboard = () => {
         </section>
       )}
 
-      <section className="rounded-2xl bg-white p-6 shadow-sm">
+      <section className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
         <h3 className="text-lg font-semibold">Role-based tools</h3>
         <ul className="mt-3 space-y-2 text-sm text-slate-600">
           {user?.role === 'admin' && (
             <>
-              <li>• Review analytics and system reports.</li>
-              <li>• Manage organizations and access control.</li>
+              <li className="rounded-lg bg-slate-50 px-3 py-2">Review analytics and system reports.</li>
+              <li className="rounded-lg bg-slate-50 px-3 py-2">Manage organizations and access control.</li>
             </>
           )}
           {user?.role === 'organization' && (
             <>
-              <li>• Create disaster events and broadcast alerts.</li>
-              <li>• Match resources with incoming requests.</li>
+              <li className="rounded-lg bg-slate-50 px-3 py-2">Create disaster events and broadcast alerts.</li>
+              <li className="rounded-lg bg-slate-50 px-3 py-2">Match resources with incoming requests.</li>
             </>
           )}
           {user?.role === 'volunteer' && (
             <>
-              <li>• Update your availability and skills.</li>
-              <li>• View assignments and event details.</li>
+              <li className="rounded-lg bg-slate-50 px-3 py-2">Update your availability and skills.</li>
+              <li className="rounded-lg bg-slate-50 px-3 py-2">View assignments and event details.</li>
             </>
           )}
           {user?.role === 'citizen' && (
             <>
-              <li>• Submit resource requests.</li>
-              <li>• Track nearby disaster updates.</li>
+              <li className="rounded-lg bg-slate-50 px-3 py-2">Submit resource requests.</li>
+              <li className="rounded-lg bg-slate-50 px-3 py-2">Track nearby disaster updates.</li>
             </>
           )}
         </ul>

@@ -69,6 +69,12 @@ const App = () => (
         />
       </Routes>
     </main>
+    <footer className="border-t border-slate-200 bg-white py-6">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-4 text-xs text-slate-500">
+        <span>© 2026 ReliefHub. Coordinated response, faster.</span>
+        <span>Emergency hotline: +1 (800) 555-0199</span>
+      </div>
+    </footer>
   </div>
 );
 

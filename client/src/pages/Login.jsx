@@ -22,30 +22,39 @@ const Login = () => {
   };
 
   return (
-    <div className="mx-auto max-w-md rounded-xl bg-white p-8 shadow-sm">
-      <h2 className="text-2xl font-semibold">Welcome back</h2>
+    <div className="mx-auto max-w-md rounded-2xl bg-white p-8 shadow-sm ring-1 ring-slate-100">
+      <h2 className="text-2xl font-semibold text-slate-900">Welcome back</h2>
       <p className="mt-2 text-sm text-slate-500">Sign in to manage relief operations.</p>
-      {error && <p className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-600">{error}</p>}
+      {error && <p className="mt-4 rounded-xl bg-red-50 p-3 text-sm text-red-600">{error}</p>}
       <form className="mt-6 space-y-4" onSubmit={handleSubmit}>
-        <input
-          className="w-full rounded-lg border border-slate-200 px-4 py-2"
-          name="email"
-          type="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          className="w-full rounded-lg border border-slate-200 px-4 py-2"
-          name="password"
-          type="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          required
-        />
-        <button className="w-full rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white" type="submit">
+        <label className="block text-xs font-medium text-slate-500">
+          Email
+          <input
+            className="mt-1 w-full rounded-lg border border-slate-200 px-4 py-2 text-sm focus:border-blue-400 focus:outline-none"
+            name="email"
+            type="email"
+            placeholder="you@example.com"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <label className="block text-xs font-medium text-slate-500">
+          Password
+          <input
+            className="mt-1 w-full rounded-lg border border-slate-200 px-4 py-2 text-sm focus:border-blue-400 focus:outline-none"
+            name="password"
+            type="password"
+            placeholder="••••••••"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+        </label>
+        <button
+          className="w-full rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-blue-500"
+          type="submit"
+        >
           Login
         </button>
       </form>

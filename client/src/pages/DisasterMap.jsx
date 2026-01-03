@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
+import PageHeader from '../components/PageHeader';
 
 const DisasterMap = () => {
   const [disasters, setDisasters] = useState([]);
@@ -14,20 +15,21 @@ const DisasterMap = () => {
 
   return (
     <div className="space-y-6">
-      <header className="rounded-2xl bg-white p-6 shadow-sm">
-        <h2 className="text-2xl font-semibold">Disaster Map</h2>
-        <p className="mt-2 text-sm text-slate-600">OpenStreetMap view of active disasters.</p>
-        <div className="mt-4 overflow-hidden rounded-xl border border-slate-200">
-          <iframe
-            title="OpenStreetMap"
-            className="h-80 w-full"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-125.0%2C32.0%2C-113.0%2C42.0&layer=mapnik"
-          ></iframe>
-        </div>
-      </header>
+      <PageHeader title="Disaster Map" subtitle="OpenStreetMap view of active disasters.">
+        <span className="rounded-full bg-amber-50 px-4 py-2 text-xs font-semibold text-amber-700">
+          Live updates every 60s
+        </span>
+      </PageHeader>
+      <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+        <iframe
+          title="OpenStreetMap"
+          className="h-80 w-full"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-125.0%2C32.0%2C-113.0%2C42.0&layer=mapnik"
+        ></iframe>
+      </div>
       <section className="grid gap-4 md:grid-cols-2">
         {disasters.map((disaster) => (
-          <article key={disaster._id} className="rounded-xl bg-white p-6 shadow-sm">
+          <article key={disaster._id} className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-slate-100">
             <h3 className="text-lg font-semibold">{disaster.title}</h3>
             <p className="text-sm text-slate-500">{disaster.type} · {disaster.severity}</p>
             <p className="mt-3 text-sm text-slate-600">{disaster.description}</p>
